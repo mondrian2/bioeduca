@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row" *ngIf="show">
+        <div class="col-lg-12">
+            <app-alerts content={{msg}}></app-alerts>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Sugerir Software</h3>
+
+            <form [formGroup]="sugestForm" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="nome">
+                                Nome:
+                            </label>
+                            <input id="nome" name="nome" type="text" formControlName="nome" class="form-control"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="site">
+                                Site:
+                            </label>
+                            <input id="site" type="text" formControlName="site" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="desenvolvedor">
+                                Desenvolvedor:
+                            </label>
+                            <input id="desenvolvedor" type="text" formControlName="desenvolvedor" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="anoletivo">
+                                Ano Letivo:
+                            </label>
+                            <select id="anoletivo" formControlName="anoletivo" class="form-control">
+                                <option value="1">1º ano</option>
+                                <option value="2">2º ano</option>
+                                <option value="3">3º ano</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="conteudo">
+                                Conteúdo:
+                            </label>
+                            <select id="conteudo" formControlName="conteudo" class="form-control">
+                                <option value="1">Origem da vida</option>
+                                <option value="2">Bioquímica Celular</option>
+                                <option value="3">Citologia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">
+                                Descrição:
+                            </label>
+                            <textarea id="descricao" formControlName="descricao" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="intrucoesdeuso">
+                                Instruções de uso:
+                            </label>
+                            <textarea id="intrucoesdeuso" formControlName="intrucoesdeuso"
+                                class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="img">
+                                Imagem:
+                            </label>
+                            <input id="img" type="text" formControlName="img" class="form-control">
+                        </div>
+                        <div class="form-group" *ngIf="currentUser">
+                            <label for="indicadopor"></label>
+                            indicado por {{currentUser.nome}}
+                            <input id="indicadopor" type="hidden" formControlName="indicadopor" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <button class="btn" type="submit">Enviar</button>
+
+            </form>
+        </div>
+    </div>
+</div>

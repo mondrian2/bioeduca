@@ -1,0 +1,26 @@
+<div class="card">
+    <img class="card-img-top"
+        src={{img}}
+        alt="Imagem de capa do card">
+    <div class="card-body">
+        <h5 class="card-title">{{nome}}</h5>
+        <p class="card-text"> {{descricao}}</p>
+        <div class="text-center">
+            <star-rating value="{{rating}}" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"
+                (rate)="onRate($event)"></star-rating>
+            <!-- <a href="#" class="btn btn-primary">Mais Detalhes</a> -->
+            <a [routerLink]="['/detalhe', id]" queryParamsHandling=id
+                            class="btn btn-info">Mais Detalhes</a>
+        </div>
+    </div>
+</div>
+
+<!-- nome
+site
+desenvolvedor
+anoletivo
+conteudo
+descricao
+rating
+instrucoesdeuso
+img -->
