@@ -1,13 +1,11 @@
 # BioEduca
 Projeto de sugestão, cadastro e avaliação de software na área de educação.
 
-pasta bioeduca-front-angular
+Na pasta "/bioeduca-front-angular". Você encontra o projeto completo em angular.
 
-Você encontra o projeto completo em angular.
+Os componentes estão na pasta /bioeduca-front-angular/src/app
 
-os componentes estão na pasta /bioeduca-front-angular/src/app
-
-## Conponentes
+## Componentes
 
 * AlertsComponent
 * AppComponent
@@ -30,4 +28,3 @@ os componentes estão na pasta /bioeduca-front-angular/src/app
 * UsuarioExcluirComponent
 
 
-pasta api-node-express > projeto api backend 
