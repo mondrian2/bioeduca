@@ -1,0 +1,20 @@
+<div class="card">
+    <img class="card-img-top"
+        src={{img}}
+        alt="Imagem de capa do card">
+    <div class="card-body">
+        <h5 class="card-title">{{nome}}</h5>
+        <p class="card-text"> {{descricao}}</p>
+        <div class="text-center">
+            <h2>{{valor * 10 / quant | currency: 'Nota: '}}</h2>
+            <star-rating value="{{valor * 5 / quant}}" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"></star-rating>
+        
+            <a 
+                [routerLink]="['/software-consultar', id]" 
+                queryParamsHandling=id 
+                class="btn btn-info">
+                Mais Detalhes
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<section *ngIf="myIndications">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <h1>{{myIndications.nome}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card">
+                    <img src={{myIndications.img}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <h4 class="card-title">{{myIndications.nome}}</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 text-left">
+                                <p class="card-text">{{myIndications.descricao}}</p>
+                            </div>
+                        </div>
+                        <div class="row mt-lg-3" *ngIf="myIndications.intrucoesdeuso">
+                            <div class="col-lg-12 text-left">
+                                <h5>Intrução de uso</h5>
+                                <p class="card-text">{{myIndications.intrucoesdeuso}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button type="button" *ngIf="showLink" class="btn btn-secondary col-lg-12"
+                                    data-toggle="modal" data-target="#exampleModal">
+                                    Acessar link do software
+                                </button></div>
+                            <div class="col-lg-12 text-center" *ngIf="showAvaliar">
+                                <div class="alert alert-danger" role="alert">
+                                    Link Bloqueado. Você possui pendência de avaliação.
+                                </div>
+                                <a class="btn btn-info col-lg-12" routerLink="/pendencia/">Avaliar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-lg-3" *ngIf="avaliacao">
+            <div class="col-lg-6 offset-lg-3">
+
+                <ul class="list-unstyled">
+                    <li class="media" *ngFor="let a of avaliacao.data">
+                        <div class="card mt-lg-3">
+                            <div class="card-body">
+                                <img src="../../../../assets/user.png" width="20%" class="mr-3" alt="...">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">{{a.nome}}</h5>
+                                    <p class="font-weight-lighter font-italic"> {{a.comentario}}
+                                    </p>
+                                    <div class="text-center">
+                                        <h2>{{a.pontuacao * 10 | currency: 'Nota: '}}</h2>
+                                        <star-rating value="{{a.pontuacao * 10 * 5 / 12}}" checkedcolor="red"
+                                            uncheckedcolor="black" size="24px" readonly="false"></star-rating>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Link</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card mb-lg-2" *ngIf="!showLink">
+                        <div class="card-body text-center">
+                            <h6 class="card-subtitle mb-2 text-muted">{{myIndications.site}}</h6>
+                        </div>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        Para continuar a utilizar a plataforma você concorda em avaliar o software? Caso não avalie,
+                        será bloqueado e não poderá mais visualizar os links para utilizar os softwares até que avalie
+                        este software.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary"
+                        (click)="gerarPendenca(myIndications._id, myIndications.nome)">Concordo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

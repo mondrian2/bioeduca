@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-lg-4">
+<a class="navbar-brand" routerLink="/">BioEduca</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item active" *ngIf="currentUser">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active" *ngIf="currentUser">
+        <a class="nav-link" routerLink="/software-meus-sugeridos">Meus Softwares <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active" *ngIf="currentUser">
+        <a class="nav-link" routerLink="/pendencia">Minhas Pendências<span class="sr-only">(current)</span></a>
+    </li>
+    </ul>
+    <div class="my-2 my-lg-0" *ngIf="currentUser">
+        <span class="text-info"><small>Olá {{currentUser.nome}}</small></span>
+    <a class="btn btn-outline-info ml-lg-2 my-2 my-sm-0 text-info" routerLink="usuario-consultar" type="submit"><i class="fas fa-user"></i> Perfil</a>
+    <a class="btn btn-outline-info ml-lg-2 my-2 my-sm-0 text-info" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+    <div class="my-2 my-lg-0" *ngIf="!currentUser">
+    <a class="btn btn-outline-info ml-lg-2 my-2 my-sm-0 text-info" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </div>
+</div>
+</nav>

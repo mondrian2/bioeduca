@@ -1,0 +1,20 @@
+<section>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3" *ngIf="pendencia">
+            <div class="card" *ngFor="let p of pendencia.data">
+                <div class="card-body text-center">
+                    Avaliação pendente para o software <strong>{{p.software_nome}}</strong>
+                </div>
+                <a class="btn btn-info m-lg-3" routerLink="/avaliacao/{{p.software_id}}">Avaliar</a>
+            </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3" *ngIf="!pendencia">
+            <div class="card">
+                <div class="card-body text-center">
+                    Não há pendências
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

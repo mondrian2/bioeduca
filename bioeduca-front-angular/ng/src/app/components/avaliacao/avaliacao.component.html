@@ -1,0 +1,59 @@
+<div class="container" *ngIf="questoes">
+    <div class="row" *ngIf="show">
+        <div class="col-lg-6 offset-lg-3">
+            <app-alerts content={{msg}}></app-alerts>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <h3 *ngIf="software">Avaliar o software <br> <strong> {{software.nome}}</strong></h3>
+
+            <form [formGroup]="avaliacaoForm" (ngSubmit)="onSubmit(avaliacaoForm.value)">
+                <div class="form-group" *ngFor="let q of questoes.data; let i = index">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="nome{{i+1}}">
+                                {{i+1}} - {{q.questao}}
+                            </label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" (change)="setarNota(1)" type="radio"
+                                    formControlName="q{{i+1}}" id="q{{i+1}}" value="1">
+                                <label class="form-check-label" for="q{{i+1}}">
+                                    Sim
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" (change)="setarNota(-1)" type="radio"
+                                    formControlName="q{{i+1}}" id="q{{i+1+1}}" value="0" checked>
+                                <label class="form-check-label" for="q{{i+1+1}}">
+                                    Não
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comentario">
+                        Comentário:
+                    </label>
+                    <textarea id="comentario" formControlName="comentario" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.comentario.errors }"></textarea>
+                    <div *ngIf="submitted && f.comentario.errors" class="invalid-feedback">
+                        <div *ngIf="f.comentario.errors.required">comentario obrigatório</div>
+                    </div>
+                </div>
+
+                <button class="btn" type="submit">Enviar</button>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="row" *ngIf="show">
+        <div class="col-lg-6 offset-lg-3">
+            <app-alerts content={{msg}}></app-alerts>
+        </div>
+    </div>
+</div>

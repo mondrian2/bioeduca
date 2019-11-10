@@ -1,0 +1,51 @@
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-lg-3 text-right">
+                <a [routerLink]="['/software-cadastrar']" class="btn btn-secondary btn-sm active" role="button"
+                    aria-pressed="true">Sugerir um software</a>
+            </div>
+            <div class="col-lg-12 jumbotron" *ngIf="sistema">
+                <div class="row pb-md-5">
+                    <div class="col-lg-12">
+                            <div class="row">
+                                    <form [formGroup]="sugestForm" class="form-inline" (ngSubmit)="onSubmit(sugestForm.value)">
+                                            <div class="form-group">
+                                                <label for="anoletivo" class="mr-lg-3">
+                                                    Ano Letivo: 
+                                                </label>
+                                                <select id="anoletivo" formControlName="anoletivo" (change)="setConteudo()"
+                                                    class="form-control">
+                                                    <option value="1">1º ano</option>
+                                                    <option value="2">2º ano</option>
+                                                    <option value="3">3º ano</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" *ngIf="conteudo">
+                                                <label for="conteudo" class="ml-lg-3 mr-lg-3">
+                                                    Conteúdo:
+                                                </label>
+                                                <select *ngIf="conteudo" id="conteudo" formControlName="conteudo" class="form-control">
+                                                    <option *ngFor="let c of conteudo | keyvalue" value={{c.value}}>{{c.value}}</option>
+                    
+                                                </select>
+                                            </div>
+                                            <button *ngIf="conteudo" class="btn btn-secondary btn-sm active ml-lg-3" type="submit"><i class="fas fa-filter"></i> Filtrar</button>
+                                        </form>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let s of sistema.data">
+                        <app-card id={{s._id}} site={{s.site}} nome={{s.nome}} site={{s.site}}
+                            desenvolvedor={{s.desenvolvedor}} anoletivo={{s.anoletiv}} conteudo={{s.conteudo}}
+                            descricao={{s.descricao}} rating={{s.rating}} instrucoesdeuso={{s.instrucoesdeuso}}
+                            img={{s.img}}>
+                        </app-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
