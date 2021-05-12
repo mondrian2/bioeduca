@@ -47,7 +47,7 @@
     "mongodb": "^3.3.3",
     "mongodb-core": "^3.2.7",
     "multer": "^1.4.2",
-    "nodemailer": "^6.3.1",
+    "nodemailer": "^6.4.16",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
   },
