@@ -60,7 +60,7 @@
     "@types/mongodb": "^3.3.6",
     "@types/serve-favicon": "^2.2.31",
     "axios": "^0.19.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nodemon": "^1.19.4",
     "shx": "^0.3.2",
     "ts-mocha": "^6.0.0",
